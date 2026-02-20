@@ -10,7 +10,7 @@
 - **Clone o projeto**
   ```
   git clone https://github.com/Alberth-Farias/Preact-To-Do-List.git
-  cd nome-do-projeto
+  cd Preact-To-Do-List
   ```
 - **Instale as dependências**
   ```
