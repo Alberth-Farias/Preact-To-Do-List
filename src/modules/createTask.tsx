@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 export default function CreateTask({ onAddTask, toHide }) {
   const [textTitulo, setTextTitulo] = useState("");
@@ -22,16 +22,33 @@ export default function CreateTask({ onAddTask, toHide }) {
     }
   }
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        toHide(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  });
+
   return (
     <div className="fixed flex h-full w-full justify-center items-center backdrop-blur-sm transition duration-180 z-1">
-      <div className="bg-base-100 h-120 w-3xl max-w-dvh relative p-5 rounded-3xl">
-        <h3 className="font-bold text-3xl mb-7">Criar Task</h3>
-        <button
-          class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-          onClick={() => toHide(false)}
-        >
-          ✕
-        </button>
+      <div className="bg-base-100 h-120 w-3xl max-w-dvh relative p-8 rounded-3xl">
+        <div className="w-full flex justify-between items-start">
+          <h3 className="font-bold text-3xl mb-7">Criar Task</h3>
+          <button
+            class="btn btn-sm btn-circle btn-ghost text-lg p-2!"
+            onClick={() => toHide(false)}
+          >
+            ✕
+          </button>
+        </div>
+
         <div className="grid grid-cols-2">
           <div className="flex flex-col">
             <legend className="fieldset-legend text-lg">Titulo</legend>

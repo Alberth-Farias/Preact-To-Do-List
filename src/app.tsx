@@ -3,6 +3,7 @@ import Header from "./modules/header";
 import CreateTask from "./modules/createTask";
 import Tasks from "./modules/tasks";
 import { OnStart, beforeUnload } from "./lib/functions";
+import Footer from "./modules/footer";
 
 export function App() {
   const [tasks, setTasks] = useState([]);
@@ -73,12 +74,11 @@ export function App() {
   }
 
   return (
-    <div className="flex flex-col">
-      {isCreateOpen && (
-        <CreateTask onAddTask={addTask} toHide={setIsOpen}></CreateTask>
-      )}
+    <>
+      {isCreateOpen && <CreateTask onAddTask={addTask} toHide={setIsOpen} />}
+
       <Header
-        setIsOpen={setIsOpen}
+        setHistoryIsOpen={setIsOpen}
         taskCount={taskCount}
         themeCheck={themeCheck}
         setThemeCheck={setThemeCheck}
@@ -91,7 +91,16 @@ export function App() {
         dateSimplify={dateSimplify}
       />
 
-      {/* footer and task history modules not required right now */}
-    </div>
+      <Footer />
+
+      <div className="fab fixed bottom-5 right-5">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="btn btn-lg btn-circle btn-accent text-3xl"
+        >
+          +
+        </button>
+      </div>
+    </>
   );
 }

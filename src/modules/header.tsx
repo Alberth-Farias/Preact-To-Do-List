@@ -1,18 +1,24 @@
 export default function Header({
-  setIsOpen,
+  setHistoryIsOpen,
   taskCount,
   themeCheck,
   setThemeCheck,
 }) {
   return (
-    <div className="navbar bg-base-300 shadow-lg flex justify-between pl-4 pr-4 h-30">
-      <p className="font-bold text-4xl pointer-events-none">TO-DO-LIST</p>
+    <div className="navbar bg-base-300 shadow-lg flex pl-4 pr-4 h-30 relative justify-center">
+      <div className="flex items-center gap-4 text-3xl absolute left-8">
+        <img src="./logo.webp" class="size-18" />
+        <p className="font-extrabold text-4xl pointer-events-none">
+          TO-DO-LIST
+        </p>
+      </div>
+
       <div className="flex row justify-around">
         <button
-          onClick={() => setIsOpen(true)}
-          class="btn btn-lg btn-outline btn-success m-2"
+          onClick={() => setHistoryIsOpen(true)}
+          class="btn btn-lg btn-outline btn-primary m-2"
         >
-          Criar
+          Histórico
         </button>
         <div className="divider divider-horizontal"></div>
         <div className="stats">
@@ -20,7 +26,7 @@ export default function Header({
           <div className="stat-value text-primary">{taskCount}</div>
         </div>
       </div>
-      <label className="flex items-center justify-center cursor-pointer gap-2">
+      <label className="flex items-center justify-center cursor-pointer gap-2 absolute right-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
