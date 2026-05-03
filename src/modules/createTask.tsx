@@ -57,10 +57,10 @@ export default function CreateTask({ onAddTask, toHide }) {
               onInput={(e) => setTextTitulo(e.currentTarget.value)}
               type="text"
               minLength={1}
-              maxLength={20}
+              maxLength={40}
               className="input input-xl pika-single"
             ></input>
-            <p className="label mb-7 mt-1 ml-1">{textTitulo.length + "/20"}</p>
+            <p className="label mb-7 mt-1 ml-1">{textTitulo.length + "/40"}</p>
           </div>
           <div className="flex flex-col">
             <legend className="fieldset-legend text-lg">Descrição</legend>
@@ -69,11 +69,11 @@ export default function CreateTask({ onAddTask, toHide }) {
               onInput={(e) => setTextDescricao(e.currentTarget.value)}
               type="text"
               minLength={1}
-              maxLength={20}
+              maxLength={40}
               className="input input-xl pika-single"
             ></input>
             <p className="label mb-7 mt-1 ml-1">
-              {textDescricao.length + "/20"}
+              {textDescricao.length + "/40"}
             </p>
           </div>
           <div>
