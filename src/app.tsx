@@ -120,10 +120,10 @@ export function App() {
       />
 
       {isHistoryOpen && (
-        <History 
-          history={history} 
-          onClear={clearHistory} 
-          onClose={() => setIsHistoryOpen(false)} 
+        <History
+          history={history}
+          onClear={clearHistory}
+          onClose={() => setIsHistoryOpen(false)}
         />
       )}
 

@@ -5,15 +5,15 @@ export default function Tasks({
   dateSimplify,
 }) {
   return (
-    <div className="card shadow-sm h-[calc(100vh-120px)] p-10">
-      <div className="card-body bg-base-200 rounded-lg overflow-auto">
+    <div className="card shadow-sm h-[calc(100vh-120px)] p-4 md:p-10">
+      <div className="card-body bg-base-200 rounded-lg overflow-auto p-2 md:p-8">
         <div className="overflow-x-auto">
-          <table className="table">
+          <table className="table w-full min-w-[500px] md:min-w-full">
             <thead>
               <tr className="grid-cols-4">
-                <th />
+                <th className="w-16 md:w-auto" />
                 {["Nome", "Prioridade", "Prazo"].map((item: string) => (
-                  <th className="text-xl font-light text-center w-3/10">
+                  <th className="text-lg md:text-xl font-light text-center">
                     {item}
                   </th>
                 ))}
@@ -22,27 +22,29 @@ export default function Tasks({
             <tbody>
               {tasks.map((task: any) => (
                 <tr key={task.id}>
-                  <th class="w-1/10 text-center">
+                  <th className="text-center">
                     <input
                       type="checkbox"
-                      className="checkbox checkbox-xl checkbox-success"
+                      className="checkbox checkbox-md md:checkbox-xl checkbox-success"
                       onChange={() => completeTask(task.id)}
                     />
                   </th>
-                  <td className="w-3/10 text-center">
+                  <td className="text-center">
                     <div className="flex items-center justify-center gap-3">
                       <div>
-                        <div className="font-bold text-2xl">{task.titulo}</div>
-                        <div className="text-sm opacity-50">
+                        <div className="font-bold text-lg md:text-2xl">{task.titulo}</div>
+                        <div className="text-xs md:text-sm opacity-50">
                           {task.descricao}
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td className="w-3/10 text-center">
-                    {priorityColor(task.prioridade)}
+                  <td className="text-center">
+                    <div className="scale-75 md:scale-100">
+                      {priorityColor(task.prioridade)}
+                    </div>
                   </td>
-                  <td className="w-3/10 text-center text-2xl">
+                  <td className="text-center text-lg md:text-2xl">
                     {dateSimplify(task.data)}
                   </td>
                 </tr>

@@ -5,32 +5,36 @@ export default function Header({
   setThemeCheck,
 }) {
   return (
-    <div className="navbar bg-base-300 shadow-lg flex pl-4 pr-4 h-30 relative justify-center">
-      <div className="flex items-center gap-4 text-3xl absolute left-8">
-        <img src="./logo.webp" class="size-18" />
-        <p className="font-extrabold text-4xl pointer-events-none">
+    <div className="navbar bg-base-300 shadow-lg flex flex-col md:flex-row px-4 h-auto md:h-30 relative justify-center py-4 md:py-0 gap-4">
+      <div className="flex items-center gap-4 text-2xl md:text-3xl md:absolute md:left-8">
+        <img src="./logo.webp" className="size-12 md:size-18" />
+        <p className="font-extrabold text-3xl md:text-4xl pointer-events-none">
           TO-DO-LIST
         </p>
       </div>
 
-      <div className="flex row justify-around">
+      <div className="flex flex-row items-center justify-around">
         <button
           onClick={() => setHistoryIsOpen(true)}
-          class="btn btn-lg btn-outline btn-primary m-2"
+          className="btn btn-md md:btn-lg btn-outline btn-primary m-2"
         >
           Histórico
         </button>
         <div className="divider divider-horizontal"></div>
-        <div className="stats">
-          <div className="stat-title">Tasks completas</div>
-          <div className="stat-value text-primary">{taskCount}</div>
+        <div className="stats bg-transparent shadow-none">
+          <div className="stat p-2 md:p-4">
+            <div className="stat-title text-xs md:text-base">Tasks completas</div>
+            <div className="stat-value text-primary text-2xl md:text-4xl">{taskCount}</div>
+          </div>
         </div>
       </div>
-      <label className="flex items-center justify-center cursor-pointer gap-2 absolute right-8">
+
+      <label className="flex items-center justify-center cursor-pointer gap-2 md:absolute md:right-8 scale-90 md:scale-100">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
+          width="24"
+          height="24"
+          className="md:w-7 md:h-7"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -50,8 +54,9 @@ export default function Header({
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
+          width="24"
+          height="24"
+          className="md:w-7 md:h-7"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
