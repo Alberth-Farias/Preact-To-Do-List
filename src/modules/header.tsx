@@ -1,9 +1,11 @@
+import type { HeaderProps } from "../types";
+
 export default function Header({
   setHistoryIsOpen,
   taskCount,
   themeCheck,
   setThemeCheck,
-}) {
+}: HeaderProps) {
   return (
     <div className="navbar bg-base-300 shadow-lg flex flex-col md:flex-row px-4 h-auto md:h-30 relative justify-center py-4 md:py-0 gap-4">
       <div className="flex items-center gap-4 text-2xl md:text-3xl md:absolute md:left-8">

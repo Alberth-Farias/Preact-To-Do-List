@@ -1,9 +1,10 @@
 import { useEffect, useState } from "preact/hooks";
+import type { CreateTaskProps, Priority } from "../types";
 
-export default function CreateTask({ onAddTask, toHide }) {
+export default function CreateTask({ onAddTask, toHide }: CreateTaskProps) {
   const [textTitulo, setTextTitulo] = useState("");
   const [textDescricao, setTextDescricao] = useState("");
-  const [prioridade, setPrioridade] = useState("Baixa");
+  const [prioridade, setPrioridade] = useState<Priority>("Baixa");
   const [data, setData] = useState("");
 
   function handleAddTask() {
@@ -23,7 +24,7 @@ export default function CreateTask({ onAddTask, toHide }) {
   }
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         toHide(false);
       }
@@ -81,7 +82,7 @@ export default function CreateTask({ onAddTask, toHide }) {
               <legend className="fieldset-legend text-base md:text-lg">Prioridade</legend>
               <select
                 value={prioridade}
-                onChange={(e) => setPrioridade(e.currentTarget.value)}
+                onChange={(e) => setPrioridade(e.currentTarget.value as Priority)}
                 className="select select-bordered select-md md:select-xl mb-4 md:mb-7"
               >
                 <option value={"Baixa"}>Baixa</option>

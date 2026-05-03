@@ -1,9 +1,11 @@
+import type { TasksProps, Task } from "../types";
+
 export default function Tasks({
   tasks,
   completeTask,
   priorityColor,
   dateSimplify,
-}) {
+}: TasksProps) {
   return (
     <div className="card shadow-sm h-[calc(100vh-120px)] p-4 md:p-10">
       <div className="card-body bg-base-200 rounded-lg overflow-auto p-2 md:p-8">
@@ -20,7 +22,7 @@ export default function Tasks({
               </tr>
             </thead>
             <tbody>
-              {tasks.map((task: any) => (
+              {tasks.map((task: Task) => (
                 <tr key={task.id}>
                   <th className="text-center">
                     <input

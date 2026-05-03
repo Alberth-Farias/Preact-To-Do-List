@@ -1,4 +1,6 @@
-export default function History({ history, onClear, onClose }) {
+import type { HistoryProps, HistoryTask } from "../types";
+
+export default function History({ history, onClear, onClose }: HistoryProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <div className="card bg-base-100 w-full max-w-2xl shadow-2xl animate-in fade-in zoom-in duration-200">
@@ -28,7 +30,7 @@ export default function History({ history, onClear, onClose }) {
               </div>
             ) : (
               <div className="space-y-4">
-                {history.map((task) => (
+                {history.map((task: HistoryTask) => (
                   <div key={task.id} className="flex items-center justify-between p-4 bg-base-200 rounded-xl border border-base-content/5">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-1">

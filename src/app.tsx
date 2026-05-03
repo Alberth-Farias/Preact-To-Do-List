@@ -5,13 +5,14 @@ import Tasks from "./modules/tasks";
 import History from "./modules/history";
 import Footer from "./modules/footer";
 import { useEffect } from "preact/hooks";
+import type { Task, HistoryTask, Priority } from "./types";
 
 export function App() {
-  const [tasks, setTasks] = useState(() => {
+  const [tasks, setTasks] = useState<Task[]>(() => {
     const saved = localStorage.getItem("tasks");
     return saved ? JSON.parse(saved) : [];
   });
-  const [history, setHistory] = useState(() => {
+  const [history, setHistory] = useState<HistoryTask[]>(() => {
     const saved = localStorage.getItem("history");
     return saved ? JSON.parse(saved) : [];
   });
@@ -40,12 +41,12 @@ export function App() {
     localStorage.setItem("themePreference", themeCheck.toString());
   }, [themeCheck]);
 
-  function addTask(task) {
+  function addTask(task: Task) {
     setTasks([task, ...tasks]);
     console.log(themeCheck);
   }
 
-  function completeTask(idTask) {
+  function completeTask(idTask: string) {
     const task = tasks.find((t) => t.id === idTask);
     if (task) {
       setHistory([{ ...task, completedAt: new Date().toISOString() }, ...history]);
@@ -59,7 +60,7 @@ export function App() {
     setTaskCount(0);
   }
 
-  function dateSimplify(taskDate) {
+  function dateSimplify(taskDate: string) {
     const hoje = new Date();
     const hojeFormatado = hoje.toLocaleDateString("pt-BR");
 
@@ -84,7 +85,7 @@ export function App() {
     return taskDate;
   }
 
-  function priorityColor(priorityValue) {
+  function priorityColor(priorityValue: Priority) {
     if (priorityValue === "Baixa") {
       return (
         <div className="badge badge-soft badge-success text-2xl pt-3 pb-3">
